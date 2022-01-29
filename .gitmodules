@@ -10,9 +10,15 @@
 [submodule "components/cpputils"]
 	path = components/cpputils
 	url = ../../0xFEEDC0DE64/cpputils.git
+[submodule "components/cxx-ring-buffer"]
+	path = components/cxx-ring-buffer
+	url = ../../0xFEEDC0DE64/cxx-ring-buffer.git
 [submodule "components/date"]
 	path = components/date
 	url = ../../0xFEEDC0DE64/date.git
+[submodule "components/espasynchttpreq"]
+	path = components/espasynchttpreq
+	url = ../../0xFEEDC0DE64/espasynchttpreq.git
 [submodule "components/espasyncota"]
 	path = components/espasyncota
 	url = ../../0xFEEDC0DE64/espasyncota.git

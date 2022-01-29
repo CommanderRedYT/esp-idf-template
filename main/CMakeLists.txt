@@ -1,8 +1,18 @@
 set(headers
+    config.h
+    debugconsole.h
+    ota.h
+    taskmanager.h
+    wifi.h
 )
 
 set(sources
+    config.cpp
+    debugconsole.cpp
     main.cpp
+    ota.cpp
+    taskmanager.cpp
+    wifi.cpp
 )
 
 set(dependencies

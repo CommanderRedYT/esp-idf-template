@@ -3,6 +3,7 @@ set(headers
     debugconsole.h
     ota.h
     taskmanager.h
+    webserver.h
     wifi.h
 )
 
@@ -12,6 +13,7 @@ set(sources
     main.cpp
     ota.cpp
     taskmanager.cpp
+    webserver.cpp
     wifi.cpp
 )
 

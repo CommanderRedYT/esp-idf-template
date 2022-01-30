@@ -13,8 +13,8 @@ class EspAsyncOta;
 
 extern EspAsyncOta &otaClient;
 
-void ota_cloud_init();
-void ota_cloud_update();
+void ota_client_init();
+void ota_client_update();
 
-tl::expected<void, std::string> otaCloudTrigger(std::string_view url);
-tl::expected<void, std::string> otaCloudAbort();
+tl::expected<void, std::string> otaClientTrigger(std::string_view url);
+tl::expected<void, std::string> otaClientAbort();

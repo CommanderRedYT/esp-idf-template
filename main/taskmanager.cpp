@@ -14,6 +14,7 @@
 #include "wifi.h"
 #include "debugconsole.h"
 #include "ota.h"
+#include "webserver.h"
 
 using namespace std::chrono_literals;
 
@@ -25,7 +26,8 @@ void not_needed() {}
 espcpputils::SchedulerTask schedulerTasksArr[] {
     espcpputils::SchedulerTask { "wifi",         wifi_begin,        wifi_update,         100ms },
     espcpputils::SchedulerTask { "debugconsole", init_debugconsole, update_debugconsole, 50ms },
-    espcpputils::SchedulerTask { "ota_cloud",    ota_cloud_init,    ota_cloud_update,    100ms },
+    espcpputils::SchedulerTask { "ota_client",   ota_client_init,   ota_client_update,   100ms },
+    espcpputils::SchedulerTask { "webserver",    initWebserver,     handleWebserver,     100ms },
 };
 } // namespace
 

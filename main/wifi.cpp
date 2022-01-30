@@ -13,6 +13,8 @@
 #include "config.h"
 
 namespace {
+constexpr const char * const TAG = "WIFI";
+
 wifi_stack::config createConfig();
 std::optional<wifi_stack::sta_config> createStaConfig();
 wifi_stack::wifi_entry createWifiEntry(const WiFiConfig &wifi_config);
@@ -34,13 +36,13 @@ esp_err_t wifi_scan()
     const auto &sta_config = createStaConfig();
     if (!sta_config)
     {
-        ESP_LOGE("BOBBY", "no sta enabled");
+        ESP_LOGE(TAG, "no sta enabled");
         return ESP_FAIL;
     }
 
     if (const auto result = wifi_stack::begin_scan(*sta_config); !result)
     {
-        ESP_LOGE("BOBBY", "begin_scan() failed with %.*s", result.error().size(), result.error().data());
+        ESP_LOGE(TAG, "begin_scan() failed with %.*s", result.error().size(), result.error().data());
         return ESP_FAIL;
     }
 

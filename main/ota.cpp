@@ -20,21 +20,21 @@
 using namespace std::chrono_literals;
 
 namespace {
-constexpr const char * const TAG = "OTA_CLOUD";
+constexpr const char * const TAG = "OTA_CLIENT";
 
 cpputils::DelayedConstruction<EspAsyncOta> _otaClient;
 } // namespace
 
 EspAsyncOta &otaClient{_otaClient.getUnsafe()};
 
-void ota_cloud_init()
+void ota_client_init()
 {
     ESP_LOGI(TAG, "called");
 
     _otaClient.construct("asyncOtaTask", 8192u);
 }
 
-void ota_cloud_update()
+void ota_client_update()
 {
     _otaClient->update();
 }

@@ -22,10 +22,10 @@ namespace {
 std::string defaultHostname()
 {
     if (const auto result = wifi_stack::get_default_mac_addr())
-        return fmt::format("bobby_{:02x}{:02x}{:02x}", result->at(3), result->at(4), result->at(5));
+        return fmt::format("dmx_{:02x}{:02x}{:02x}", result->at(3), result->at(4), result->at(5));
     else
         ESP_LOGE(TAG, "get_default_mac_addr() failed: %.*s", result.error().size(), result.error().data());
-    return "bobby";
+    return "dmx";
 }
 
 ConfigManager<ConfigContainer> configs;

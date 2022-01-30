@@ -107,6 +107,8 @@ public:
     ConfigWrapper<espchrono::minutes32> timezoneOffset{espchrono::minutes32{60},           DoReset,   {},                           "timezoneOffset"      }; // MinMaxValue<minutes32, -1440m, 1440m>
     ConfigWrapper<espchrono::DayLightSavingMode>timeDst{espchrono::DayLightSavingMode::EuropeanSummerTime, DoReset, {},             "time_dst"            };
 
+    ConfigWrapper<std::string> otaUrl             {std::string{},                          DoReset,   StringOr<StringEmpty, StringValidUrl>, "otaUrl"   };
+
     template<typename T>
     void callForEveryConfig(T &&callable)
     {
@@ -160,6 +162,8 @@ public:
         REGISTER_CONFIG(timeSyncInterval)
         REGISTER_CONFIG(timezoneOffset)
         REGISTER_CONFIG(timeDst)
+
+        REGISTER_CONFIG(otaUrl)
 
 #undef REGISTER_API_VALUE
     }

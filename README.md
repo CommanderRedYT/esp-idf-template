@@ -1,2 +1,1 @@
-# DmxFirmware
-ESP32 dmx test firmware
+# This is a empty esp32 firmware

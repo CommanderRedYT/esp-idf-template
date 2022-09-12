@@ -4,6 +4,7 @@
 
 // system includes
 #include <chrono>
+#include <utility>
 
 // esp-idf includes
 #include <esp_log.h>
@@ -11,17 +12,17 @@
 #include <esp_http_server.h>
 
 // 3rdparty lib includes
-#include <htmlbuilder.h>
+#include <cpputils.h>
+#include <espasyncota.h>
+#include <espchrono.h>
 #include <espcppmacros.h>
 #include <esphttpdutils.h>
-#include <tickchrono.h>
 #include <espstrutils.h>
 #include <fmt/core.h>
-#include <espasyncota.h>
-#include <futurecpp.h>
-#include <espchrono.h>
-#include <cpputils.h>
+#include <htmlbuilder.h>
 #include <numberparsing.h>
+#include <strutils.h>
+#include <tickchrono.h>
 
 // local includes
 #include "ota.h"
@@ -157,7 +158,7 @@ esp_err_t webserver_ota_handler(httpd_req_t *req)
             {
                 HtmlTag trTag{"tr", body};
                 { HtmlTag tdTag{"td", body}; body += "Current sha256"; }
-                { HtmlTag tdTag{"td", body}; body += esphttpdutils::htmlentities(espcpputils::toHexString({app_desc->app_elf_sha256, 8})); }
+                { HtmlTag tdTag{"td", body}; body += esphttpdutils::htmlentities(cpputils::toHexString({app_desc->app_elf_sha256, 8})); }
             }
         }
         else
@@ -232,7 +233,7 @@ esp_err_t webserver_ota_handler(httpd_req_t *req)
                 {
                     HtmlTag trTag{"tr", body};
                     { HtmlTag tdTag{"td", body}; body += "New sha256"; }
-                    { HtmlTag tdTag{"td", body}; body += esphttpdutils::htmlentities(espcpputils::toHexString({appDesc->app_elf_sha256, 8})); }
+                    { HtmlTag tdTag{"td", body}; body += esphttpdutils::htmlentities(cpputils::toHexString({appDesc->app_elf_sha256, 8})); }
                 }
             }
         }
@@ -245,7 +246,7 @@ esp_err_t webserver_ota_handler(httpd_req_t *req)
                 body += "Trigger Update";
             }
 
-            body += fmt::format("<input type=\"text\" name=\"url\" value=\"{}\" />", esphttpdutils::htmlentities(configs.otaUrl.value));
+            body += fmt::format("<input type=\"text\" name=\"url\" value=\"{}\" />", esphttpdutils::htmlentities(configs.otaUrl.value()));
 
             {
                 HtmlTag buttonTag{"button", "type=\"submit\"", body};
@@ -548,7 +549,7 @@ esp_err_t webserver_settings_handler(httpd_req_t *req)
 
                 {
                     HtmlTag divTag{"div", "class=\"form-table-cell\"", body};
-                    showInputForSetting(nvsName, config.value, body);
+                    showInputForSetting(nvsName, config.value(), body);
                 }
 
                 {
@@ -578,7 +579,7 @@ esp_err_t webserver_settings_handler(httpd_req_t *req)
                         {
                             HtmlTag buttonTag{"span", "style=\"color: yellow;\"", body};
                             body += "No Reset";
-                        }
+                         }
                     }
                 }
 

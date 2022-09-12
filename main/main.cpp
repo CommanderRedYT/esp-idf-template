@@ -159,20 +159,20 @@ extern "C" void app_main()
         {
             wasPreviouslyUpdating = isUpdating;
 
-            constexpr bool panic =
-#ifdef CONFIG_ESP_TASK_WDT_PANIC
-                true
-#else
-                false
-#endif
-                ;
-
-            const uint32_t timeout = isUpdating ?
-                                         CONFIG_ESP_TASK_WDT_TIMEOUT_S * 4 :
-                                         CONFIG_ESP_TASK_WDT_TIMEOUT_S;
-
-            const auto result = esp_task_wdt_init(CONFIG_ESP_TASK_WDT_TIMEOUT_S, panic);
-            ESP_LOG_LEVEL_LOCAL((result == ESP_OK ? ESP_LOG_INFO : ESP_LOG_ERROR), TAG, "esp_task_wdt_init() with new timeout %u returned: %s", timeout, esp_err_to_name(result));
+//            constexpr bool panic =
+//#ifdef CONFIG_ESP_TASK_WDT_PANIC
+//                true
+//#else
+//                false
+//#endif
+//                ;
+//
+//            const uint32_t timeout = isUpdating ?
+//                                         CONFIG_ESP_TASK_WDT_TIMEOUT_S * 4 :
+//                                         CONFIG_ESP_TASK_WDT_TIMEOUT_S;
+//
+//            const auto result = esp_task_wdt_init(CONFIG_ESP_TASK_WDT_TIMEOUT_S, panic);
+//            ESP_LOG_LEVEL_LOCAL((result == ESP_OK ? ESP_LOG_INFO : ESP_LOG_ERROR), TAG, "esp_task_wdt_init() with new timeout %u returned: %s", timeout, esp_err_to_name(result));
         }
 #endif
 

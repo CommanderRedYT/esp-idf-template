@@ -43,3 +43,6 @@
 [submodule "components/fmt"]
 	path = components/fmt
 	url = ../../0xFEEDC0DE64/fmt.git
+[submodule "esp-protocols"]
+	path = esp-protocols
+	url = ../../0xFEEDC0DE64/esp-protocols.git
